@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage ('SCM') {
             steps {
-               echo "SCM"
+               //echo "SCM"
+               git branch: 'temp', credentialsId: 'ayaz-github-creds', url: 'https://github.com/azdn949/maven-app.git'
             }
         }
         stage ('Build') {
