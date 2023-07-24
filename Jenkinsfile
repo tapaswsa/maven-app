@@ -1,24 +1,25 @@
 pipeline {
     agent { label 'Linux' }
-    options {
-        skipDefaultCheckout true
-    }
+    // options {
+    //     skipDefaultCheckout true
+    // }
     tools {
         maven 'maven'
     }
     stages {
-        stage ('SCM') {
-            steps {
-               echo "---------SCM Start----------"
-               git branch: 'temp', credentialsId: 'ayaz-github-creds', url: 'https://github.com/azdn949/maven-app.git'
-               sh "ls -l"
-               echo "---------SCM End------------"
-            }
-        }
+        // stage ('SCM') {
+        //     steps {
+        //        echo "---------SCM Start----------"
+        //        git branch: 'temp', credentialsId: 'ayaz-github-creds', url: 'https://github.com/azdn949/maven-app.git'
+        //        sh "ls -l"
+        //        echo "---------SCM End------------"
+        //     }
+        // }
         stage ('Build') {
             steps {
                echo "---------Build Start----------"
                sh "mvn clean install -DskipTests"
+               sh "ls -l target/"
                echo "---------Build End------------"
             }
         }
